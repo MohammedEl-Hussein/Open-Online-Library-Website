@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Book Page</title>
+  <link rel="stylesheet" href="{% static 'css/add_book.css' %}" />
+</head>
+<body>
+  <section id="addBookSection">
+    <h2>Add a New Book</h2>
+    <form id="addBookForm">
+      <label for="bookID">ID:</label>
+      <input type="text" id="bookID" name="bookID" required />
+      <label for="bookName">Book Name:</label>
+      <input type="text" id="bookName" name="bookName" required />
+      <label for="author">Author:</label>
+      <input type="text" id="author" name="author" required />
+      <label for="category">Category:</label>
+      <input type="text" id="category" name="category" required />
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required></textarea>
+      <label for="image">Image URL:</label>
+      <input type="text" id="image" name="image" required />
+      <div class="button-container">
+        <button type="submit" class="submit-button">Add Book</button>
+        <button type="button" class="back-button" id="backButton">Back</button>
+      </div>
+    </form>
+  </section>
+  
+  <script>
+      // Pass URLs to JavaScript
+      const adminDashboardUrl = "{% url 'admin_dashboard' %}";
+  </script>
+  <script type="module" src="{% static 'js/add_book.js' %}"></script>
+</body>
+</html>

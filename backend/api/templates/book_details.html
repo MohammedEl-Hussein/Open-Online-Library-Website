@@ -1,0 +1,53 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    <link rel="stylesheet" href="{% static 'css/book_details.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user-dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #fffdf5;
+        }
+    </style>  
+</head>
+<body>
+    <header id="navigation-bar">
+        <nav>
+            <a href="{% url 'user_dashboard' %}">Home</a>
+            <a href="{% url 'view_books' %}"><strong>Browse</strong></a>
+            <a href="{% url 'borrowed_books' %}">My Books</a>
+            <a href="{% url 'home' %}" id="logout-link" style="background-color: red; padding: 7px; border-radius: 7px;">Logout</a>
+        </nav>
+        <search>
+            <form onsubmit="handleSearch(event)">
+                <input type="text" id="searchInput" placeholder="Search for books or authors...">
+                <button type="submit">Search</button>
+            </form>
+        </search>
+    </header>
+
+    <div id="books-container">
+        <!-- Books will be loaded here by JavaScript -->
+    </div>
+
+        <footer>
+            &copy; 2025 Online Library. All rights reserved.
+        </footer>
+
+        <script>
+            // Pass URLs to JavaScript
+            const bookDetailsUrl = "{% url 'book_details' %}";
+            const borrowedBooksUrl = "{% url 'borrowed_books' %}";
+            const homeUrl = "{% url 'home' %}";
+            const userDashboardUrl = "{% url 'user_dashboard' %}";
+            const currentBookId = "{{ book_id }}"; // Pass the book ID from the view
+        </script>
+        <script type="module" src="{% static 'js/book_details.js' %}"></script>
+        <script type="module" src="{% static 'js/search.js' %}"></script>
+        <script type="module" src="{% static 'js/auth.js' %}"></script>
+    </body>
+</html>

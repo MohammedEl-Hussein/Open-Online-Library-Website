@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Delete Book Page</title>
+  <link rel="stylesheet" href="{% static 'css/delete_book.css' %}" />
+</head>
+
+<body>
+  <section id="deleteBookSection">
+    <h2>Delete a Book</h2>
+
+    <form id="deleteBookForm">
+      <label for="bookSelect">Select Book to Delete:</label>
+      <select id="bookSelect" name="bookID" required>
+        <option value="">-- Select a Book --</option>
+        <!-- Add more options dynamically from your database -->
+      </select>
+
+      <div id="bookDetails" style="display: none;">
+        <h3>Book Details</h3>
+        <p><strong>Name:</strong> <span id="displayBookName"></span></p>
+        <p><strong>Author:</strong> <span id="displayAuthor"></span></p>
+        <p><strong>Category:</strong> <span id="displayCategory"></span></p>
+        <p><strong>Description:</strong> <span id="displayDescription"></span></p>
+        
+        <div class="confirmation-message">
+          <p>Are you sure you want to delete this book?</p>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button type="submit" class="submit-button" id="deleteButton" disabled>Delete Book</button>
+        <button type="button" class="back-button" id="backButton">Back</button>
+      </div>
+    </form>
+  </section>
+  
+  <script>
+      // Pass URLs to JavaScript
+      const adminDashboardUrl = "{% url 'admin_dashboard' %}";
+  </script>
+  <script type="module" src="{% static 'js/delete_book.js' %}"></script>
+</body>
+</html>

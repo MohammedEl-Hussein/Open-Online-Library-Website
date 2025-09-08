@@ -1,0 +1,54 @@
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Borrowed Books</title>
+  <link rel="stylesheet" href="{% static 'css/borrowed_books.css' %}">
+  <link rel="stylesheet" href="{% static 'css/user-dashboard.css' %}">
+  <link rel="stylesheet" href="{% static 'css/search.css' %}">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f7f1;
+    }
+  </style>
+</head>
+<body>
+  <header id="navigation-bar">
+    <nav>
+        <a href="{% url 'user_dashboard' %}">Home</a>
+        <a href="{% url 'book_details' %}">Browse</a>
+        <a href="{% url 'borrowed_books' %}"><strong>My Books</strong></a>
+        <a href="{% url 'home' %}" id="logout-link" style="background-color: red; padding: 7px; border-radius: 7px;">Logout</a>
+    </nav>
+    <search>
+      <form onsubmit="handleSearch(event)">
+          <input type="text" id="searchInput" placeholder="Search for books or authors...">
+          <button type="submit">Search</button>
+      </form>
+  </search>
+  </header>
+  <div class="box">
+    <h2>Borrowed Books</h2>
+    <ul class="book-list" id="borrowedBooksList">
+      <!-- Borrowed books will be loaded here -->
+    </ul>
+    <a href="{% url 'view_books' %}" class="return-button">← Return to Library</a>
+  </div>
+
+        <footer>
+            &copy; 2025 Online Library. All rights reserved.
+        </footer>
+
+        <script>
+            // Pass URLs to JavaScript
+            const bookDetailsUrl = "{% url 'book_details' %}";
+            const borrowedBooksUrl = "{% url 'borrowed_books' %}";
+            const homeUrl = "{% url 'home' %}";
+            const userDashboardUrl = "{% url 'user_dashboard' %}";
+        </script>
+        <script type="module" src="{% static 'js/borrowed_books.js' %}"></script>
+        <script type="module" src="{% static 'js/auth.js' %}"></script>
+    </body>
+</html>

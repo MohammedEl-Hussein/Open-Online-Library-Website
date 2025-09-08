@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>View Books Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'css/viewBooks.css' %}">
+</head>
+
+<body>
+  <section id="viewBooksSection">
+    <h2>List of Available Books</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Book Name</th>
+          <th>Author</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody id="books-table-body">
+        <!-- Book data will be loaded dynamically here -->
+      </tbody>
+    </table>
+
+    <button type="button" class="back-button" id="backButton">Back</button>
+  </section>
+  <script>
+      const adminDashboardUrl = "{% url 'admin_dashboard' %}";
+  </script>
+  <script type="module" src="{% static 'js/viewBooks.js' %}"></script>
+</body>
+
+</html>

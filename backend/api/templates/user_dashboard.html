@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Library</title>
+        <link rel="stylesheet" href="{% static 'css/user-dashboard.css' %}">
+        <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    </head>
+    <body id="U_dash">
+        <header id="navigation-bar">
+            <nav>
+                <a href="{% url 'user_dashboard' %}"><strong>Home</strong></a>
+                <a href="{% url 'book_details' %}">Browse</a>
+                <a href="{% url 'borrowed_books' %}">My Books</a>
+                <a href="{% url 'home' %}" id="logout-link" style="background-color: red; padding: 7px; border-radius: 7px;">Logout</a>
+            </nav>
+            <search>
+                <form onsubmit="handleSearch(event)">
+                    <input type="text" id="searchInput" placeholder="Search for books or authors...">
+                    <button type="submit">Search</button>
+                </form>
+            </search>
+        </header>
+
+        <br>
+        <section class="hero">
+            <h1>Welcome to the Online Library</h1>
+            <h3>Explore Thousands of Books Online</h3>
+        </section>
+
+        <div id="books-container">
+            <section class="Category">
+                <h2>Loading Books...</h2>
+                <div class="book-list">
+                    <!-- Books will be loaded dynamically here -->
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            &copy; 2025 Online Library. All rights reserved.
+        </footer>
+
+        <script>
+            // Pass URLs to JavaScript if needed by the scripts
+            const bookDetailsUrlName = "book_details"; // Pass the URL name, JS can construct the URL if needed
+            const borrowedBooksUrl = "{% url 'borrowed_books' %}";
+            const homeUrl = "{% url 'home' %}"; // Pass home URL for logout redirect
+        </script>
+        <script type="module" src="{% static 'js/user_dashboard.js' %}"></script>
+        <script type="module" src="{% static 'js/search.js' %}"></script>
+        <script type="module" src="{% static 'js/auth.js' %}"></script>
+    </body>
+</html>

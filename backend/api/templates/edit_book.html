@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book Page</title>
+    <link rel="stylesheet" href="{% static 'css/edit_book.css' %}">
+</head>
+<body>
+    <section id="editBookSection">
+        <h2>Edit Book Details</h2>
+        <form id="editBookForm">
+            <label for="bookSelect">Select Book to Edit:</label>
+            <select id="bookSelect" name="bookID" required>
+                <option value="">-- Select a Book --</option>
+            </select>
+            <label for="editBookName">Book Name:</label>
+            <input type="text" id="editBookName" name="bookName" required>
+            <label for="editAuthor">Author:</label>
+            <input type="text" id="editAuthor" name="author" required>
+            <label for="editCategory">Category:</label>
+            <input type="text" id="editCategory" name="category" required>
+            <label for="editDescription">Description:</label>
+            <textarea id="editDescription" name="description" required></textarea>
+            <label for="editImage">Image URL:</label>
+            <input type="text" id="editImage" name="image" required />
+            <div class="button-container">
+                <button type="submit" class="submit-button">Save Changes</button>
+                <button type="button" class="back-button" id="backButton">Back</button>
+            </div>
+        </form>
+    </section>
+    <script>
+        const adminDashboardUrl = "{% url 'admin_dashboard' %}";
+    </script>
+    <script type="module" src="{% static 'js/edit_book.js' %}"></script>
+</body>
+</html>
